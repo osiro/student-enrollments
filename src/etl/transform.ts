@@ -81,8 +81,8 @@ const generateId = (resource: any): string => {
   return hash.sha1(resource);
 }
 
-const findOrAddCourse = (courses: Course[], newCourse: Course): Course => {
-  const foundCourse = _.find(courses, [ 'id', newCourse.id ]);
+const findOrAddCourse = (existingCourses: Course[], newCourse: Course): Course => {
+  const foundCourse = _.find(existingCourses, [ 'id', newCourse.id ]);
 
   if (foundCourse) { return foundCourse; }
   return newCourse;
