@@ -8,6 +8,6 @@ export class Enrollment {
   durationInMinutes: number;
   durationCode: string;
   subject: Subject;
-  course: Course;
   studentId: string;
+  courseId: string;
 }

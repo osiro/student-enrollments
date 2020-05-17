@@ -1,16 +1,22 @@
 import express from 'express';
-import { subjects, enrollments } from './etl';
+import { subjects, enrollments, courses } from './etl';
 import { enrollmentsBySubject } from './queries/enrollmentFilter';
+import cors from 'cors';
 
 const app = express();
 const port = 8080 || process.env.PORT;
+app.use(cors());
+
+app.get("/health", (_, res) => {
+  res.send('Ok');
+});
 
 app.get("/subjects", (_, res) => {
   res.send(subjects);
 });
 
 app.get("/enrollments/:subjectCode", (req, res) => {
-  res.send(enrollmentsBySubject(enrollments, req.params.subjectCode));
+  res.send(enrollmentsBySubject(enrollments, courses, req.params.subjectCode));
 });
 
 app.listen(port, () => {

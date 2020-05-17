@@ -1,3 +1,5 @@
+import { Enrollment } from "./enrollment";
+
 export class Course {
   id: string;
   startOn: string;
@@ -8,4 +10,5 @@ export class Course {
   roomNumber: string;
   campus: string;
   isHoliday: boolean;
+  enrollments: Enrollment[];
 }
